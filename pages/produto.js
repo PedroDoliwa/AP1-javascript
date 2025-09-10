@@ -5,7 +5,6 @@ export async function ProdutoPage() {
   const container = document.createElement("div");
   container.id = "produtos";
 
-  // Campo de busca
   const searchContainer = document.createElement("div");
   searchContainer.innerHTML = `
     <input type="text" id="search-input" placeholder="🔍 Buscar produtos por nome...">
@@ -16,12 +15,10 @@ export async function ProdutoPage() {
     const data = await fetchProducts();
     let filteredData = data;
 
-    // Container para os produtos
     const productsContainer = document.createElement("div");
     productsContainer.id = "products-container";
     container.appendChild(productsContainer);
 
-    // Função para filtrar produtos
     function filterProducts(searchTerm) {
       filteredData = data.filter(product => 
         product.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -29,7 +26,6 @@ export async function ProdutoPage() {
       renderProducts();
     }
 
-    // Função para renderizar produtos
     function renderProducts() {
       productsContainer.innerHTML = '';
       
@@ -43,13 +39,11 @@ export async function ProdutoPage() {
       });
     }
 
-    // Event listener para busca
     const searchInput = container.querySelector('#search-input');
     searchInput.addEventListener('input', (e) => {
       filterProducts(e.target.value);
     });
 
-    // Renderizar produtos iniciais
     renderProducts();
     
   } catch (error) {

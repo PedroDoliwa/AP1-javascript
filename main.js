@@ -9,7 +9,6 @@ const loading = document.getElementById("loading");
 async function renderPage(page) {
   app.innerHTML = "";
   
-  // Mostrar loading apenas para produtos (que faz requisição)
   if (page === "produtos") {
     loading.classList.remove("hidden");
     try {
